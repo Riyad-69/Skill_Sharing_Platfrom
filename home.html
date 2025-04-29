@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Skill Sharing Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <h1>Skill Sharing Platform</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="container mt-5">
+        <h2>Explore All Courses</h2>
+        <ul class="list-group">
+            {% for course in courses %}
+                <li class="list-group-item">
+                    <strong>{{ course.course_name }}</strong>
+                    <p>{{ course.description }}</p>
+                    <p><em>Duration: {{ course.duration }}</em> | <em>Level: {{ course.skill_level }}</em></p>
+                    <p><strong>Provided by: {{ course.provider.name }}</strong></p>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <footer>
+        <p>© 2025 Skill Sharing Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
